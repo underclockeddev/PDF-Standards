@@ -3,450 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PDF/A Field Guide</title>
-<meta name="description" content="PDF/A compared with other PDF standards, its parts and conformance levels, and which one suits a judicial agency. Every fact is cited.">
+<title>PDF/A Cheat Sheet</title>
+<meta name="description" content="Which PDF/A to use, on one screen. Every fact is cited.">
 <style>
 :root{
-  --bg:#f7f6f2; --surface:#ffffff; --surface-2:#f0eee8; --ink:#1d1f24; --muted:#5b606b; --line:#e2dfd6;
-  --accent:#1f4e8c; --accent-soft:#e3ecf8; --good:#1f7a4d; --good-soft:#e2f3ea; --warn:#9a5b00; --warn-soft:#fbefd9;
-  --bad:#a33a2c; --bad-soft:#f8e4e0; --p1:#6b7c93; --p2:#1f4e8c; --p3:#8a5a00; --p4:#6a3e9e;
-  --radius:14px; --shadow:0 1px 2px rgba(0,0,0,.04),0 4px 16px rgba(0,0,0,.05);
+  --bg:#f7f6f2; --surface:#fff; --surface-2:#f0eee8; --ink:#1d1f24; --muted:#5b606b; --line:#e2dfd6;
+  --accent:#1f4e8c; --accent-soft:#e3ecf8; --good:#1f7a4d; --good-soft:#e2f3ea;
+  --warn:#9a5b00; --warn-soft:#fbefd9; --bad:#a33a2c; --bad-soft:#f8e4e0;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
     --bg:#14161a; --surface:#1c1f25; --surface-2:#23272e; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
-    --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a; --warn:#e8b45c; --warn-soft:#3a2e18;
-    --bad:#f08f80; --bad-soft:#3d2320; --p1:#9aa8bb; --p2:#8db4ec; --p3:#e0b255; --p4:#b997e8;
-    --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+    --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a;
+    --warn:#e8b45c; --warn-soft:#3a2e18; --bad:#f08f80; --bad-soft:#3d2320;
   }
 }
 :root[data-theme="dark"]{
   --bg:#14161a; --surface:#1c1f25; --surface-2:#23272e; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
-  --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a; --warn:#e8b45c; --warn-soft:#3a2e18;
-  --bad:#f08f80; --bad-soft:#3d2320; --p1:#9aa8bb; --p2:#8db4ec; --p3:#e0b255; --p4:#b997e8;
-  --shadow:0 1px 2px rgba(0,0,0,.3),0 4px 16px rgba(0,0,0,.25);
+  --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a;
+  --warn:#e8b45c; --warn-soft:#3a2e18; --bad:#f08f80; --bad-soft:#3d2320;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
-.wrap{max-width:1040px;margin:0 auto;padding:0 16px}
-header.top{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-header.top .wrap{display:flex;align-items:center;gap:16px;height:52px}
-.brand{font-weight:700;letter-spacing:-.01em;text-decoration:none;color:var(--ink);white-space:nowrap}
-nav.toc{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
-nav.toc::-webkit-scrollbar{display:none}
-nav.toc a{font-size:14px;color:var(--muted);text-decoration:none;padding:6px 10px;border-radius:8px;white-space:nowrap}
-nav.toc a:hover{background:var(--surface-2);color:var(--ink)}
-.hero{padding:56px 0 24px}
-.eyebrow{font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-h1{font-size:clamp(30px,5vw,46px);line-height:1.1;letter-spacing:-.02em;margin:10px 0 14px}
-.lede{font-size:18px;color:var(--muted);max-width:680px;margin:0}
-section{padding:40px 0;border-top:1px solid var(--line)}
-section:first-of-type{border-top:0}
-h2{font-size:26px;letter-spacing:-.01em;margin:0 0 6px}
-.sub{color:var(--muted);margin:0 0 24px;max-width:700px}
-h3{font-size:17px;margin:0 0 6px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
-.grid{display:grid;gap:16px}
-.g2{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.g3{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
-sup.c{font-size:11px;line-height:0;margin-left:1px}
-sup.c a{text-decoration:none;font-weight:600;padding:0 2px;border-radius:4px;background:var(--accent-soft)}
-sup.c a:hover{text-decoration:underline}
+.page{max-width:1120px;margin:0 auto;padding:20px 16px;min-height:100%;display:grid;grid-template-rows:auto auto auto auto auto;gap:14px;align-content:center}
+sup{font-size:10px;line-height:0}
+sup a{text-decoration:none;font-weight:600;padding:0 2px;border-radius:3px;background:var(--accent-soft)}
+.label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
 
-/* TL;DR */
-.tldr{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:28px}
-@media (max-width:760px){.tldr{grid-template-columns:1fr}}
-.verdict{background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:var(--shadow)}
-.verdict .big{font-size:40px;font-weight:800;letter-spacing:-.02em;color:var(--accent);line-height:1}
-.verdict .big small{font-size:18px;font-weight:600;color:var(--muted);margin-left:6px}
-.verdict p{margin:12px 0 0}
-.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--surface-2);color:var(--muted);vertical-align:middle}
-.three{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.three li{display:flex;gap:12px;align-items:flex-start}
-.num{flex:0 0 28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;background:var(--accent);color:var(--surface)}
+.hero{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:16px;padding:18px 22px}
+.hero .use{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero .big{font-size:clamp(40px,7vw,60px);font-weight:800;letter-spacing:-.03em;color:var(--accent);line-height:1}
+.hero p{margin:0;flex:1;min-width:240px;font-size:16px}
+.theme{margin-left:auto;align-self:flex-start;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 9px;cursor:pointer}
 
-/* family */
-.fam{border-left:4px solid var(--line)}
-.fam .iso{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
-.fam.hl{border-left-color:var(--accent);background:linear-gradient(90deg,var(--accent-soft),var(--surface) 60%)}
-.fam .use{font-size:15px;margin:6px 0 0}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media (max-width:820px){.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}}
+@media (max-width:440px){.grid4{grid-template-columns:1fr}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tile .if{font-size:13px;color:var(--muted)}
+.tile .then{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:2px 0}
+.tile .note{font-size:13px;color:var(--muted)}
+.t-go .then{color:var(--accent)} .t-court .then{color:var(--good)} .t-no .then{color:var(--bad)}
+.t-no{background:var(--bad-soft);border-color:transparent}
 
-/* timeline */
-.timeline{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-@media (max-width:860px){.timeline{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:520px){.timeline{grid-template-columns:1fr}}
-.part{position:relative;padding-top:26px}
-.part .year{position:absolute;top:0;left:20px;font-size:13px;font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums}
-.part .card{height:100%;border-top:4px solid var(--c)}
-.part .name{font-size:22px;font-weight:800;color:var(--c);letter-spacing:-.01em}
-.part .base{font-size:13px;color:var(--muted);margin-bottom:10px}
-.part ul{margin:0;padding-left:18px;font-size:15px}
-.part li{margin:4px 0}
-.part .lv{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
-.chip{font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid var(--line);background:var(--surface-2)}
+.no{display:flex;gap:10px;align-items:flex-start}
+.x{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--bad-soft);color:var(--bad)}
+.x.w{background:var(--warn-soft);color:var(--warn)}
+.no b{display:block}
+.no span{font-size:13px;color:var(--muted)}
 
-/* levels */
-.level .letter{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;font-weight:800;margin-bottom:10px}
-.level.b .letter{background:var(--warn-soft);color:var(--warn)}
-.level.u .letter{background:var(--good-soft);color:var(--good)}
-.level.a .letter{background:var(--accent-soft);color:var(--accent)}
-.meter{display:flex;gap:4px;margin:12px 0 2px}
-.meter i{flex:1;height:6px;border-radius:3px;background:var(--surface-2)}
-.meter i.on{background:currentColor}
-.level.b .meter{color:var(--warn)} .level.u .meter{color:var(--good)} .level.a .meter{color:var(--accent)}
-.meter-label{font-size:12px;color:var(--muted)}
+.gotchas{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
+.chip b{color:var(--warn)}
 
-/* table */
-.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
-table{border-collapse:collapse;width:100%;min-width:640px;font-size:15px}
-th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-thead th{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:var(--surface-2)}
-tbody th{font-weight:600;white-space:nowrap}
-tr:last-child td,tr:last-child th{border-bottom:0}
-td.rec{background:var(--accent-soft)}
-.y{color:var(--good);font-weight:700} .n{color:var(--bad);font-weight:700} .m{color:var(--warn);font-weight:700}
-
-/* decision */
-.flow{display:grid;gap:12px}
-.step{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}
-@media (max-width:640px){.step{grid-template-columns:1fr}.step .arrow{display:none}}
-.step .q{font-weight:600}
-.step .arrow{color:var(--muted);font-size:20px}
-.step .ans{font-weight:700;padding:8px 14px;border-radius:10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap;text-align:center}
-.step .ans.warn{background:var(--warn-soft);color:var(--warn)}
-.step .ans.bad{background:var(--bad-soft);color:var(--bad)}
-.step .icon{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--surface-2);font-size:18px}
-.step .why{font-size:14px;color:var(--muted);margin-top:2px}
-
-.why-list{display:grid;gap:12px}
-.why-item{display:grid;grid-template-columns:24px 1fr;gap:12px}
-.why-item .dot{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;font-size:13px;font-weight:700}
-.dot.g{background:var(--good-soft);color:var(--good)} .dot.r{background:var(--bad-soft);color:var(--bad)} .dot.w{background:var(--warn-soft);color:var(--warn)}
-
-/* limits */
-.lim{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px}
-.lim .card{display:flex;gap:14px;padding:16px 18px}
-.lim .ic{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--bad-soft);color:var(--bad);font-weight:800}
-.lim .ic.w{background:var(--warn-soft);color:var(--warn)}
-.lim h3{font-size:16px}
-.lim p{margin:0;font-size:15px;color:var(--muted)}
-
-.callout{border-left:4px solid var(--warn);background:var(--warn-soft);padding:14px 18px;border-radius:0 10px 10px 0;margin-top:20px;font-size:15px}
-.callout.info{border-left-color:var(--accent);background:var(--accent-soft)}
-
-/* sources */
-ol.src{padding-left:0;list-style:none;counter-reset:s;display:grid;gap:8px;margin:0}
-ol.src li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;gap:8px;font-size:14px;padding:8px 10px;border-radius:8px}
-ol.src li::before{content:counter(s);font-weight:700;color:var(--accent);text-align:right}
-ol.src li:target{background:var(--accent-soft)}
-ol.src .pub{color:var(--muted)}
-ol.src a{word-break:break-word}
-footer{padding:32px 0 56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
-.theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:4px 10px;font-size:13px;cursor:pointer}
+.foot{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13px;color:var(--muted)}
+.foot .more{font-weight:700;font-size:14px}
 </style>
 </head>
 <body>
-
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#">PDF/A Field Guide</a>
-    <nav class="toc" aria-label="Sections">
-      <a href="#family">Standards</a>
-      <a href="#parts">Parts</a>
-      <a href="#levels">Levels</a>
-      <a href="#compare">Compare</a>
-      <a href="#recommend">Recommendation</a>
-      <a href="#limits">Limitations</a>
-      <a href="#sources">Sources</a>
-    </nav>
-    <button class="theme-btn" id="themeBtn" type="button" aria-label="Toggle light or dark theme">◐</button>
-  </div>
-</header>
-
-<main class="wrap">
+<main class="page">
 
   <div class="hero">
-    <div class="eyebrow">Briefing for records &amp; IT staff</div>
-    <h1>PDF/A, and which version a judicial agency should use</h1>
-    <p class="lede">A five-minute read. Every factual statement carries a numbered citation; click it to jump to the source.</p>
+    <div>
+      <div class="use">Default for our records</div>
+      <div class="big">PDF/A-2u</div>
+    </div>
+    <p>An archive-safe PDF whose text stays searchable.<sup><a href="details.html#s3">3</a></sup><sup><a href="details.html#s9">9</a></sup> The U.S. National Archives (NARA) lists PDF/A-2 as a preferred format.<sup><a href="details.html#s14">14</a></sup></p>
+    <button class="theme" id="t" type="button" aria-label="Toggle theme">◐</button>
+  </div>
 
-    <div class="tldr">
-      <div class="verdict">
-        <span class="tag">Our recommendation</span>
-        <div class="big" style="margin-top:12px">PDF/A-2u <small>default</small></div>
-        <p><strong>PDF/A-2a</strong> when your tools produce properly tagged (structured) documents. <strong>PDF/A-2b</strong> for scanned paper. When a court's e-filing system names a version, use the version it names.</p>
-        <p style="font-size:14px;color:var(--muted)">This recommendation is our analysis of the cited facts below, not a statement taken from any one source. <a href="#recommend">See the reasoning →</a></p>
-      </div>
-      <div class="card">
-        <h3 style="margin-bottom:12px">PDF/A in three lines</h3>
-        <ul class="three">
-          <li><span class="num">1</span><span>It is an ISO standard (ISO 19005) for long-term preservation of electronic documents.<sup class="c"><a href="#s1">1</a></sup></span></li>
-          <li><span class="num">2</span><span>Its goal is to keep a document's static visual appearance over time, independent of the tools used to create, store or render it.<sup class="c"><a href="#s5">5</a></sup></span></li>
-          <li><span class="num">3</span><span>It works by requiring that everything needed to render the file (fonts, colour profiles, images) is inside the file.<sup class="c"><a href="#s11">11</a></sup></span></li>
-        </ul>
-      </div>
+  <div>
+    <div class="label">Pick by situation</div>
+    <div class="grid4">
+      <div class="tile t-go"><div class="if">Made on a computer</div><div class="then">PDF/A-2u</div><div class="note">2a if your tools tag structure<sup><a href="details.html#s10">10</a></sup></div></div>
+      <div class="tile t-go"><div class="if">Scanned paper</div><div class="then">PDF/A-2b</div><div class="note">the usual level for scans<sup><a href="details.html#s7">7</a></sup></div></div>
+      <div class="tile t-court"><div class="if">Filing with a court</div><div class="then">Court's rule</div><div class="note">federal FAQs: 1a preferred, 1b minimum<sup><a href="details.html#s17">17</a></sup></div></div>
+      <div class="tile t-no"><div class="if">Need attachments inside</div><div class="then">Don't</div><div class="note">NARA: don't use attachments in PDF/A-3 or 4<sup><a href="details.html#s15">15</a></sup></div></div>
     </div>
   </div>
 
-  <!-- FAMILY -->
-  <section id="family">
-    <h2>PDF/A compared with the other PDF standards</h2>
-    <p class="sub">"PDF" is one format with several ISO-standardized subsets. Each subset is built for a different job. PDF/A is the only one built for archiving.</p>
-    <div class="grid g3">
-      <div class="card fam">
-        <div class="iso">ISO 32000</div>
-        <h3>PDF (base format)</h3>
-        <p class="use">The base specification. PDF/A-1 builds on PDF 1.4, PDF/A-2 and -3 on PDF 1.7 (ISO 32000-1), and PDF/A-4 on PDF 2.0 (ISO 32000-2).<sup class="c"><a href="#s8">8</a></sup><sup class="c"><a href="#s6">6</a></sup></p>
-      </div>
-      <div class="card fam hl">
-        <div class="iso">ISO 19005</div>
-        <h3>PDF/A, for <em>archiving</em></h3>
-        <p class="use">Long-term preservation. Built to maximize device independence, self-containment and self-documentation.<sup class="c"><a href="#s5">5</a></sup></p>
-      </div>
-      <div class="card fam">
-        <div class="iso">ISO 14289</div>
-        <h3>PDF/UA, for <em>accessibility</em></h3>
-        <p class="use">Universal Accessibility. Supports assistive technology such as screen readers. First published in 2012.<sup class="c"><a href="#s12">12</a></sup><sup class="c"><a href="#s13">13</a></sup></p>
-      </div>
-      <div class="card fam">
-        <div class="iso">ISO 15930</div>
-        <h3>PDF/X, for <em>printing</em></h3>
-        <p class="use">Graphic arts and professional print workflows. Strict subsets of PDF for accurate print reproduction.<sup class="c"><a href="#s12">12</a></sup></p>
-      </div>
-      <div class="card fam">
-        <div class="iso">ISO 24517</div>
-        <h3>PDF/E, for <em>engineering</em></h3>
-        <p class="use">Engineering documents, including interactive 3D. Published in 2008.<sup class="c"><a href="#s12">12</a></sup></p>
-      </div>
-      <div class="card fam">
-        <div class="iso">ISO 16612</div>
-        <h3>PDF/VT, for <em>variable data printing</em></h3>
-        <p class="use">High-speed variable-data and transactional printing. Builds on PDF/X.<sup class="c"><a href="#s12">12</a></sup></p>
-      </div>
+  <div>
+    <div class="label">Why not the others</div>
+    <div class="grid3">
+      <div class="tile no"><span class="x w">1</span><div><b>PDF/A-1 is more limited</b><span>No transparency, no layers, no "u" level.<sup><a href="details.html#s8">8</a></sup><sup><a href="details.html#s3">3</a></sup></span></div></div>
+      <div class="tile no"><span class="x">3</span><div><b>PDF/A-3 allows any attachment</b><span>The archive inherits every embedded format and its virus risk.<sup><a href="details.html#s14">14</a></sup></span></div></div>
+      <div class="tile no"><span class="x w">4</span><div><b>PDF/A-4 lacks software support</b><span>Library of Congress found no conforming PDF/A-4 software.<sup><a href="details.html#s6">6</a></sup></span></div></div>
     </div>
-    <div class="callout info"><strong>PDF/A and PDF/UA are separate standards.</strong> PDF/A preserves how a document looks. PDF/UA makes it usable with assistive technology.<sup class="c"><a href="#s12">12</a></sup> The Library of Congress lists both among its recommended formats for digital textual works.<sup class="c"><a href="#s16">16</a></sup></div>
-  </section>
+  </div>
 
-  <!-- PARTS -->
-  <section id="parts">
-    <h2>The four parts of PDF/A</h2>
-    <p class="sub">Each part is a separate ISO standard, and a newer part does not replace an older one. The number after "PDF/A-" is the part; the letter after it is the conformance level.</p>
-    <div class="timeline">
-      <div class="part" style="--c:var(--p1)">
-        <div class="year">2005</div>
-        <div class="card">
-          <div class="name">PDF/A-1</div>
-          <div class="base">ISO 19005-1 · based on PDF 1.4<sup class="c"><a href="#s1">1</a></sup></div>
-          <ul>
-            <li>The original PDF/A standard.<sup class="c"><a href="#s3">3</a></sup></li>
-            <li>No transparency and no layers.<sup class="c"><a href="#s8">8</a></sup></li>
-          </ul>
-          <div class="lv"><span class="chip">1a</span><span class="chip">1b</span></div>
-        </div>
-      </div>
-      <div class="part" style="--c:var(--p2)">
-        <div class="year">2011</div>
-        <div class="card">
-          <div class="name">PDF/A-2</div>
-          <div class="base">ISO 19005-2 · based on PDF 1.7<sup class="c"><a href="#s3">3</a></sup><sup class="c"><a href="#s8">8</a></sup></div>
-          <ul>
-            <li>Adds JPEG 2000 compression, transparency and layers.<sup class="c"><a href="#s8">8</a></sup></li>
-            <li>Allows attachments only when they are also PDF/A files.<sup class="c"><a href="#s5">5</a></sup></li>
-            <li>Adds level "u".<sup class="c"><a href="#s3">3</a></sup></li>
-          </ul>
-          <div class="lv"><span class="chip">2a</span><span class="chip">2b</span><span class="chip">2u</span></div>
-        </div>
-      </div>
-      <div class="part" style="--c:var(--p3)">
-        <div class="year">2012</div>
-        <div class="card">
-          <div class="name">PDF/A-3</div>
-          <div class="base">ISO 19005-3 · based on PDF 1.7<sup class="c"><a href="#s2">2</a></sup></div>
-          <ul>
-            <li>Identical to PDF/A-2, except that it allows attachments in <em>any</em> format.<sup class="c"><a href="#s3">3</a></sup></li>
-            <li>The standard places no long-term usability requirements on those attachments.<sup class="c"><a href="#s14">14</a></sup></li>
-          </ul>
-          <div class="lv"><span class="chip">3a</span><span class="chip">3b</span><span class="chip">3u</span></div>
-        </div>
-      </div>
-      <div class="part" style="--c:var(--p4)">
-        <div class="year">2020</div>
-        <div class="card">
-          <div class="name">PDF/A-4</div>
-          <div class="base">ISO 19005-4 · based on PDF 2.0<sup class="c"><a href="#s6">6</a></sup></div>
-          <ul>
-            <li>Drops the a/b/u levels. Has one base profile plus two optional ones.<sup class="c"><a href="#s4">4</a></sup></li>
-            <li><strong>4f</strong> allows attachments in any format. <strong>4e</strong> is for engineering and 3D, and succeeds PDF/E.<sup class="c"><a href="#s4">4</a></sup></li>
-          </ul>
-          <div class="lv"><span class="chip">4</span><span class="chip">4e</span><span class="chip">4f</span></div>
-        </div>
-      </div>
+  <div>
+    <div class="label">Know this</div>
+    <div class="gotchas">
+      <span class="chip"><b>"b"</b> = may look right but not be searchable<sup><a href="details.html#s9">9</a></sup></span>
+      <span class="chip"><b>No</b> passwords or encryption<sup><a href="details.html#s5">5</a></sup></span>
+      <span class="chip"><b>Not</b> proof of authenticity<sup><a href="details.html#s11">11</a></sup></span>
+      <span class="chip"><b>No</b> audio, video or scripts<sup><a href="details.html#s5">5</a></sup></span>
+      <span class="chip"><b>Check</b> files with free veraPDF<sup><a href="details.html#s20">20</a></sup></span>
     </div>
-  </section>
+  </div>
 
-  <!-- LEVELS -->
-  <section id="levels">
-    <h2>Conformance levels (the letter)</h2>
-    <p class="sub">The levels apply to PDF/A-1, -2 and -3. They set how much a file guarantees beyond looking correct.</p>
-    <div class="grid g3">
-      <div class="card level b">
-        <div class="letter">b</div>
-        <h3>Basic: looks right</h3>
-        <p style="margin:0">Covers the visual appearance of the document, but not its structural or semantic properties.<sup class="c"><a href="#s7">7</a></sup> It is the level typically used for files made from scanned pages.<sup class="c"><a href="#s7">7</a></sup></p>
-        <div class="meter" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
-        <div class="meter-label">Appearance only. Text extraction not guaranteed.<sup class="c"><a href="#s9">9</a></sup></div>
-      </div>
-      <div class="card level u">
-        <div class="letter">u</div>
-        <h3>Unicode: looks right and text is reliable</h3>
-        <p style="margin:0">Everything in level b, plus every character maps to a Unicode value, so text can be reliably searched and extracted.<sup class="c"><a href="#s3">3</a></sup><sup class="c"><a href="#s9">9</a></sup> Introduced with PDF/A-2.<sup class="c"><a href="#s3">3</a></sup></p>
-        <div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></div>
-        <div class="meter-label">Appearance plus searchable text</div>
-      </div>
-      <div class="card level a">
-        <div class="letter">a</div>
-        <h3>Accessible: looks right, reliable text, and logical structure</h3>
-        <p style="margin:0">Requires tagged structure (headings, lists, tables, reading order), a language setting and Unicode mappings.<sup class="c"><a href="#s10">10</a></sup> Takes more effort to produce.<sup class="c"><a href="#s10">10</a></sup></p>
-        <div class="meter" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></div>
-        <div class="meter-label">Appearance, text and structure</div>
-      </div>
-    </div>
-    <div class="callout"><strong>"b" is the most common trap.</strong> A level-b file can look perfect and still be unreadable by machines: level b does not require the font mapping that turns glyphs back into characters.<sup class="c"><a href="#s9">9</a></sup> That affects search, e-discovery and copy/paste.</div>
-  </section>
+  <div class="foot">
+    <a class="more" href="details.html">Full explainer and all 21 sources →</a>
+    <span>Superscripts link to sources. The recommendation is our analysis of them. Court rules win.</span>
+  </div>
 
-  <!-- COMPARE -->
-  <section id="compare">
-    <h2>Side-by-side</h2>
-    <p class="sub">The highlighted column is our recommended default.</p>
-    <div class="tablewrap">
-      <table>
-        <thead>
-          <tr><th></th><th>PDF/A-1</th><th>PDF/A-2</th><th>PDF/A-3</th><th>PDF/A-4</th></tr>
-        </thead>
-        <tbody>
-          <tr><th>ISO standard / year</th><td>19005-1 · 2005<sup class="c"><a href="#s1">1</a></sup></td><td class="rec">19005-2 · 2011<sup class="c"><a href="#s3">3</a></sup></td><td>19005-3 · 2012<sup class="c"><a href="#s2">2</a></sup></td><td>19005-4 · 2020<sup class="c"><a href="#s6">6</a></sup></td></tr>
-          <tr><th>Based on</th><td>PDF 1.4</td><td class="rec">PDF 1.7</td><td>PDF 1.7</td><td>PDF 2.0<sup class="c"><a href="#s6">6</a></sup></td></tr>
-          <tr><th>Transparency / layers / JPEG 2000</th><td><span class="n">✕</span><sup class="c"><a href="#s8">8</a></sup></td><td class="rec"><span class="y">✓</span><sup class="c"><a href="#s8">8</a></sup></td><td><span class="y">✓</span> (same as PDF/A-2)<sup class="c"><a href="#s3">3</a></sup></td><td>—</td></tr>
-          <tr><th>Attachments</th><td>—</td><td class="rec"><span class="m">PDF/A files only</span><sup class="c"><a href="#s5">5</a></sup></td><td><span class="n">Any format</span><sup class="c"><a href="#s3">3</a></sup></td><td><span class="n">Any format (4f)</span><sup class="c"><a href="#s4">4</a></sup></td></tr>
-          <tr><th>JavaScript</th><td><span class="y">Prohibited</span><sup class="c"><a href="#s5">5</a></sup></td><td class="rec"><span class="y">Prohibited</span><sup class="c"><a href="#s5">5</a></sup></td><td><span class="y">Prohibited</span><sup class="c"><a href="#s5">5</a></sup></td><td><span class="m">May be stored; must not run without explicit user action</span><sup class="c"><a href="#s5">5</a></sup></td></tr>
-          <tr><th>Conformance levels</th><td>a, b<sup class="c"><a href="#s3">3</a></sup></td><td class="rec">a, b, u<sup class="c"><a href="#s3">3</a></sup></td><td>a, b, u<sup class="c"><a href="#s3">3</a></sup></td><td>base, e, f<sup class="c"><a href="#s4">4</a></sup></td></tr>
-          <tr><th>NARA (U.S. National Archives) position</th><td><span class="y">Preferred</span><sup class="c"><a href="#s14">14</a></sup></td><td class="rec"><span class="y">Preferred</span><sup class="c"><a href="#s14">14</a></sup></td><td><span class="n">Do not use attachments</span><sup class="c"><a href="#s15">15</a></sup></td><td><span class="n">Do not use attachments</span><sup class="c"><a href="#s15">15</a></sup></td></tr>
-          <tr><th>Software-support caveat</th><td>—</td><td class="rec">—</td><td>—</td><td><span class="m">LoC found no software declaring itself a conforming PDF/A-4 processor</span><sup class="c"><a href="#s6">6</a></sup></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:13px;color:var(--muted);margin-top:10px">"—" means the cited sources found for this guide do not address the cell, so it is left blank rather than guessed.</p>
-  </section>
-
-  <!-- RECOMMEND -->
-  <section id="recommend">
-    <h2>Recommendation for a slow-moving judicial agency</h2>
-    <p class="sub">Your agency changes systems slowly, keeps records for decades, and its documents must stay readable and searchable. Answer the questions below in order.</p>
-
-    <div class="flow">
-      <div class="card step">
-        <div class="icon">⚖️</div>
-        <div><div class="q">Are you filing into a court e-filing system that names a PDF/A version?</div>
-          <div class="why">That court's rule wins. Federal court PDF/A FAQs for CM/ECF filers: PDF/A-1a preferred, PDF/A-1b the minimum. PDF/A-1a requires structure and suits electronic documents; PDF/A-1b suits scans.<sup class="c"><a href="#s17">17</a></sup><sup class="c"><a href="#s18">18</a></sup></div></div>
-        <div class="ans">Follow the court</div>
-      </div>
-      <div class="card step">
-        <div class="icon">📝</div>
-        <div><div class="q">Is the document born-digital (Word, case management system, etc.)?</div>
-          <div class="why">Choose level u so the text stays searchable.<sup class="c"><a href="#s9">9</a></sup> Choose level a if your tools produce tagged structure.<sup class="c"><a href="#s10">10</a></sup> Federal courts advise creating PDF/A from the word processor, not by printing and scanning.<sup class="c"><a href="#s19">19</a></sup></div></div>
-        <div class="ans">PDF/A-2u (or 2a)</div>
-      </div>
-      <div class="card step">
-        <div class="icon">🖨️</div>
-        <div><div class="q">Is it scanned paper?</div>
-          <div class="why">Level b is the level typically used for scanned pages.<sup class="c"><a href="#s7">7</a></sup> On its own, level b does not guarantee searchable text.<sup class="c"><a href="#s9">9</a></sup></div></div>
-        <div class="ans">PDF/A-2b</div>
-      </div>
-      <div class="card step">
-        <div class="icon">📎</div>
-        <div><div class="q">Do you need to embed spreadsheets, audio, source files or other non-PDF files?</div>
-          <div class="why">NARA says not to use the attachments feature of PDF/A-3 or PDF/A-4.<sup class="c"><a href="#s15">15</a></sup> Keep those files as separate records instead.</div></div>
-        <div class="ans bad">Avoid PDF/A-3 / 4f</div>
-      </div>
-    </div>
-
-    <h3 style="margin:32px 0 14px">Why PDF/A-2 over the other parts</h3>
-    <div class="why-list">
-      <div class="why-item"><span class="dot g">✓</span><div><strong>Federal archival guidance favors it.</strong> NARA lists PDF/A-1 and PDF/A-2 as preferred formats for textual content and does not list PDF/A-3.<sup class="c"><a href="#s14">14</a></sup> PDF/A-compliant filings also make it easier for the federal judiciary to archive with NARA.<sup class="c"><a href="#s17">17</a></sup></div></div>
-      <div class="why-item"><span class="dot g">✓</span><div><strong>It handles what modern office software produces.</strong> PDF/A-2 allows transparency, layers and JPEG 2000. PDF/A-1 does not.<sup class="c"><a href="#s8">8</a></sup></div></div>
-      <div class="why-item"><span class="dot g">✓</span><div><strong>It has the "u" level.</strong> Level u guarantees searchable text without the extra work of full tagging.<sup class="c"><a href="#s3">3</a></sup><sup class="c"><a href="#s9">9</a></sup> PDF/A-1 has no "u" level.<sup class="c"><a href="#s3">3</a></sup></div></div>
-      <div class="why-item"><span class="dot r">✕</span><div><strong>PDF/A-3 makes the archive responsible for every embedded file.</strong> An institution may end up maintaining formats it never meant to preserve, and must check that embedded files are not infected with viruses. The standard also gives no straightforward way to tell whether a file has attachments.<sup class="c"><a href="#s14">14</a></sup></div></div>
-      <div class="why-item"><span class="dot w">!</span><div><strong>PDF/A-4 is newer than its software support.</strong> PDF 2.0, the base of PDF/A-4, has not been widely adopted, and the Library of Congress found no software that declares itself a conforming PDF/A-4 processor.<sup class="c"><a href="#s6">6</a></sup> An agency that changes slowly benefits from mature, widely supported tools.</div></div>
-    </div>
-    <div class="callout info">Planning to follow the federal courts' PDF/A-1 guidance? PDF/A-1 is also NARA-preferred.<sup class="c"><a href="#s14">14</a></sup> The trade-off: PDF/A-1 does not allow transparency or layers, and it has no "u" level.<sup class="c"><a href="#s8">8</a></sup><sup class="c"><a href="#s3">3</a></sup></div>
-  </section>
-
-  <!-- LIMITS -->
-  <section id="limits">
-    <h2>Notable limitations</h2>
-    <p class="sub">What PDF/A does not do, and what it rules out.</p>
-    <div class="lim">
-      <div class="card"><div class="ic">🔒</div><div><h3>No encryption or passwords</h3><p>PDF/A does not allow encryption.<sup class="c"><a href="#s5">5</a></sup> Access control has to come from your records system, not from the file.</p></div></div>
-      <div class="card"><div class="ic">🛡️</div><div><h3>Not proof of authenticity</h3><p>PDF/A is a file format and gives no special protection against data corruption. On its own it does not guarantee long-term preservation.<sup class="c"><a href="#s11">11</a></sup></p></div></div>
-      <div class="card"><div class="ic">🎞️</div><div><h3>No audio or video</h3><p>Audio and video content are forbidden in PDF/A-1, -2 and -3.<sup class="c"><a href="#s5">5</a></sup></p></div></div>
-      <div class="card"><div class="ic">⚙️</div><div><h3>No scripts or dynamic behavior</h3><p>JavaScript and executable file launches are prohibited in PDF/A-1, -2 and -3.<sup class="c"><a href="#s5">5</a></sup> Forms that rely on scripts will not carry their logic over.</p></div></div>
-      <div class="card"><div class="ic w">🔤</div><div><h3>Fonts must be embeddable</h3><p>All fonts must be embedded. Some copyrighted fonts cannot be legally embedded.<sup class="c"><a href="#s11">11</a></sup></p></div></div>
-      <div class="card"><div class="ic w">🔁</div><div><h3>Converting old PDFs can lose features</h3><p>Most PDFs can be converted, but some features may not carry over to PDF/A.<sup class="c"><a href="#s11">11</a></sup></p></div></div>
-      <div class="card"><div class="ic w">♿</div><div><h3>PDF/A alone is not accessibility compliance</h3><p>Accessibility is a separate standard, PDF/UA (ISO 14289).<sup class="c"><a href="#s13">13</a></sup> Level "a" adds tagging, but the PDF Association publishes separate guidance on meeting both PDF/A and PDF/UA.<sup class="c"><a href="#s10">10</a></sup><sup class="c"><a href="#s21">21</a></sup></p></div></div>
-      <div class="card"><div class="ic w">✅</div><div><h3>"Saved as PDF/A" ≠ valid PDF/A</h3><p>Check files with a validator. veraPDF is a free, open-source validator for all PDF/A parts and levels, developed under the PDF Association and maintained by the Open Preservation Foundation.<sup class="c"><a href="#s20">20</a></sup></p></div></div>
-    </div>
-  </section>
-
-  <!-- SOURCES -->
-  <section id="sources">
-    <h2>Sources</h2>
-    <p class="sub">Primary sources: standards bodies (ISO, PDF Association), U.S. federal archives and libraries (NARA, Library of Congress), and federal courts. Sources were compiled on October 1, 2026. Re-check them before citing this page in policy.</p>
-    <ol class="src">
-      <li id="s1"><span><a href="https://www.iso.org/standard/38920.html">ISO 19005-1:2005 — Part 1: Use of PDF 1.4 (PDF/A-1)</a> <span class="pub">· International Organization for Standardization</span></span></li>
-      <li id="s2"><span><a href="https://www.iso.org/standard/57229.html">ISO 19005-3:2012 — Part 3: Use of ISO 32000-1 with support for embedded files (PDF/A-3)</a> <span class="pub">· International Organization for Standardization</span></span></li>
-      <li id="s3"><span><a href="https://pdfa.org/resource/iso-19005-pdfa/">ISO 19005 (PDF/A)</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s4"><span><a href="https://pdfa.org/resource/iso-19005-4-pdf-a-4/">ISO 19005-4 (PDF/A-4)</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s5"><span><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000318.shtml">PDF/A Family, PDF for Long-term Preservation (fdd000318)</a> <span class="pub">· Library of Congress, Sustainability of Digital Formats</span></span></li>
-      <li id="s6"><span><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000532.shtml">PDF/A-4, PDF for Long-term Preservation, Use of ISO 32000-2 (fdd000532)</a> <span class="pub">· Library of Congress</span></span></li>
-      <li id="s7"><span><a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000322.shtml">PDF/A-2b, Level B Conformance (fdd000322)</a> <span class="pub">· Library of Congress</span></span></li>
-      <li id="s8"><span><a href="https://pdfa.org/wp-content/uploads/2011/10/Flyer-PDFA2-Overview-EN.pdf">PDF/A-2 Overview</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s9"><span><a href="https://pdfa.org/why-pdfas-conformance-level-b-fails-machine-reading/">Why PDF/A's conformance level "b" fails machine reading</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s10"><span><a href="https://pdfa.org/accessibility-what-pdf-a-1a-really-means/">Accessibility: What PDF/A-1a Really Means</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s11"><span><a href="https://pdfa.org/pdfa-faq/">PDF/A FAQ</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s12"><span><a href="https://pdfa.org/pdf-standards/">PDF standards</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s13"><span><a href="https://pdfa.org/resource/iso-14289-pdfua/">ISO 14289-1 (PDF/UA)</a> <span class="pub">· PDF Association</span></span></li>
-      <li id="s14"><span><a href="https://www.digitalpreservation.gov/documents/NDSA_PDF_A3_report_final022014.pdf">The Benefits and Risks of the PDF/A-3 File Format for Archival Institutions (2014)</a> <span class="pub">· National Digital Stewardship Alliance, hosted by the Library of Congress</span></span></li>
-      <li id="s15"><span><a href="https://www.archives.gov/records-mgmt/policy/transfer-guidance-tables.html">Appendix A: Tables of File Formats (NARA Bulletin 2014-04)</a> <span class="pub">· U.S. National Archives and Records Administration</span></span></li>
-      <li id="s16"><span><a href="https://www.loc.gov/preservation/resources/rfs/text.html">Recommended Formats Statement — Textual Works</a> <span class="pub">· Library of Congress</span></span></li>
-      <li id="s17"><span><a href="https://www.oked.uscourts.gov/pdfa-frequently-asked-questions">PDF/A Frequently Asked Questions</a> <span class="pub">· U.S. District Court, Eastern District of Oklahoma</span></span></li>
-      <li id="s18"><span><a href="https://www.paeb.uscourts.gov/court-info/pdfa_faqs">PDF/A FAQs</a> <span class="pub">· U.S. Bankruptcy Court, Eastern District of Pennsylvania</span></span></li>
-      <li id="s19"><span><a href="https://www.nysb.uscourts.gov/upcoming-document-format-change-electronically-filed-documents">Upcoming Document Format Change for Electronically Filed Documents</a> <span class="pub">· U.S. Bankruptcy Court, Southern District of New York</span></span></li>
-      <li id="s20"><span><a href="https://verapdf.org/">veraPDF</a> <span class="pub">· veraPDF consortium / Open Preservation Foundation</span></span></li>
-      <li id="s21"><span><a href="https://pdfa.org/download-area/publications/Conforming-to-both-PDFA-&amp;-PDFUA.pdf">Conforming to both PDF/A &amp; PDF/UA — Best Practice Guide</a> <span class="pub">· PDF Association</span></span></li>
-    </ol>
-  </section>
 </main>
-
-<footer>
-  <div class="wrap">
-    Facts are cited inline. The recommendation and the "why" summaries are our analysis of those facts. Not legal advice. Check your jurisdiction's court rules and records schedules.
-  </div>
-</footer>
-
 <script>
-(function(){
-  var root=document.documentElement, btn=document.getElementById('themeBtn'), key='pdfa-theme';
-  try{var t=localStorage.getItem(key); if(t) root.setAttribute('data-theme',t);}catch(e){}
-  btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme');
-    if(!cur){cur=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
-    var next=cur==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem(key,next);}catch(e){}
-  });
-})();
+(function(){var r=document.documentElement,k='pdfa-theme';
+try{var t=localStorage.getItem(k);if(t)r.setAttribute('data-theme',t)}catch(e){}
+document.getElementById('t').onclick=function(){var c=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');var n=c==='dark'?'light':'dark';r.setAttribute('data-theme',n);try{localStorage.setItem(k,n)}catch(e){}};})();
 </script>
 </body>
 </html>

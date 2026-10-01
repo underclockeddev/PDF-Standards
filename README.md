@@ -9,7 +9,10 @@ A one-page, fully cited briefing on PDF/A for a judicial agency. It covers:
 
 Every factual statement links to a numbered source at the bottom of the page.
 
-The whole site is `index.html`: no build step and no dependencies.
+- `index.html`: the one-screen cheat sheet (no scrolling on a laptop or desktop)
+- `details.html`: the full explainer and all sources; every superscript on the cheat sheet links here
+
+No build step and no dependencies.
 
 ## Publishing with GitHub Pages
 
