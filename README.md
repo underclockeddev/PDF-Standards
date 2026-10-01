@@ -9,7 +9,7 @@ A one-page, fully cited briefing on PDF/A for a judicial agency. It covers:
 
 Every factual statement links to a numbered source at the bottom of the page.
 
-- `index.html`: the one-screen cheat sheet (no scrolling on a laptop or desktop)
+- `index.html`: a one-screen comparison table making the case for PDF/A-2 (no scrolling on a laptop or desktop)
 - `details.html`: the full explainer and all sources; every superscript on the cheat sheet links here
 
 No build step and no dependencies.
