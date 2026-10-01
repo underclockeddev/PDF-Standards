@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>PDF/A Cheat Sheet</title>
-<meta name="description" content="Which PDF/A to use, on one screen. Every fact is cited.">
+<title>Choosing a PDF/A</title>
+<meta name="description" content="A one-screen comparison of PDF/A-1 through PDF/A-4 for long-lived court records, with every fact cited.">
 <style>
 :root{
-  --bg:#f7f6f2; --surface:#fff; --surface-2:#f0eee8; --ink:#1d1f24; --muted:#5b606b; --line:#e2dfd6;
+  --bg:#f7f6f2; --surface:#fff; --surface-2:#f3f1ec; --ink:#1d1f24; --muted:#5b606b; --line:#e2dfd6;
   --accent:#1f4e8c; --accent-soft:#e3ecf8; --good:#1f7a4d; --good-soft:#e2f3ea;
   --warn:#9a5b00; --warn-soft:#fbefd9; --bad:#a33a2c; --bad-soft:#f8e4e0;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#14161a; --surface:#1c1f25; --surface-2:#23272e; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
+    --bg:#14161a; --surface:#1c1f25; --surface-2:#22262d; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
     --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a;
     --warn:#e8b45c; --warn-soft:#3a2e18; --bad:#f08f80; --bad-soft:#3d2320;
   }
 }
 :root[data-theme="dark"]{
-  --bg:#14161a; --surface:#1c1f25; --surface-2:#23272e; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
+  --bg:#14161a; --surface:#1c1f25; --surface-2:#22262d; --ink:#e9e7e1; --muted:#a3a8b2; --line:#2f343c;
   --accent:#8db4ec; --accent-soft:#1f2c40; --good:#6fcf9b; --good-soft:#18302a;
   --warn:#e8b45c; --warn-soft:#3a2e18; --bad:#f08f80; --bad-soft:#3d2320;
 }
@@ -27,87 +27,145 @@
 html,body{height:100%}
 body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
 a{color:var(--accent)}
-.page{max-width:1120px;margin:0 auto;padding:20px 16px;min-height:100%;display:grid;grid-template-rows:auto auto auto auto auto;gap:14px;align-content:center}
+.page{max-width:1120px;margin:0 auto;padding:12px 16px;min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:12px}
 sup{font-size:10px;line-height:0}
 sup a{text-decoration:none;font-weight:600;padding:0 2px;border-radius:3px;background:var(--accent-soft)}
 .label{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
 
-.hero{display:flex;align-items:center;gap:20px;flex-wrap:wrap;background:linear-gradient(135deg,var(--accent-soft),var(--surface));border:1px solid var(--line);border-radius:16px;padding:18px 22px}
-.hero .use{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.hero .big{font-size:clamp(40px,7vw,60px);font-weight:800;letter-spacing:-.03em;color:var(--accent);line-height:1}
-.hero p{margin:0;flex:1;min-width:240px;font-size:16px}
-.theme{margin-left:auto;align-self:flex-start;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 9px;cursor:pointer}
+header{display:flex;gap:16px;align-items:flex-start}
+h1{font-size:clamp(24px,3.4vw,32px);line-height:1.15;letter-spacing:-.02em;margin:0 0 6px}
+h1 em{font-style:normal;color:var(--accent)}
+.lede{margin:0;color:var(--muted);font-size:16px;max-width:820px}
+.theme{margin-left:auto;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:3px 9px;cursor:pointer}
 
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-@media (max-width:820px){.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}}
-@media (max-width:440px){.grid4{grid-template-columns:1fr}}
-.tile{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-.tile .if{font-size:13px;color:var(--muted)}
-.tile .then{font-size:22px;font-weight:800;letter-spacing:-.01em;margin:2px 0}
-.tile .note{font-size:13px;color:var(--muted)}
-.t-go .then{color:var(--accent)} .t-court .then{color:var(--good)} .t-no .then{color:var(--bad)}
-.t-no{background:var(--bad-soft);border-color:transparent}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+table{border-collapse:separate;border-spacing:0;width:100%;min-width:720px;font-size:14px;table-layout:fixed}
+th,td{padding:8px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child th,tr:last-child td{border-bottom:0}
+thead th{font-size:15px;font-weight:800;background:var(--surface-2)}
+thead th small{display:block;font-size:12px;font-weight:500;color:var(--muted)}
+tbody th{font-weight:600;color:var(--muted)}
+thead th:first-child{width:20%}
+.pick{background:var(--accent-soft)}
+thead th.pick{color:var(--accent)}
+.badge{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;background:var(--accent);color:var(--surface);border-radius:999px;padding:1px 8px;margin-left:6px;vertical-align:2px}
+.y{color:var(--good);font-weight:700}
+.n{color:var(--bad);font-weight:700}
+.d{color:var(--muted)}
+tr.verdict th{color:var(--ink)}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:13px;font-weight:800}
+.p-ok{background:var(--surface-2);color:var(--muted)}
+.p-best{background:var(--accent);color:var(--surface)}
+.p-risk{background:var(--bad-soft);color:var(--bad)}
+.p-early{background:var(--warn-soft);color:var(--warn)}
 
-.no{display:flex;gap:10px;align-items:flex-start}
-.x{flex:0 0 22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;font-weight:800;background:var(--bad-soft);color:var(--bad)}
-.x.w{background:var(--warn-soft);color:var(--warn)}
-.no b{display:block}
-.no span{font-size:13px;color:var(--muted)}
+.bottom{display:grid;grid-template-columns:1.1fr 1fr;gap:12px}
+@media (max-width:820px){.bottom{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.uses{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:0;font-size:14px}
+.uses dt{font-weight:800;color:var(--accent);white-space:nowrap}
+.uses dd{margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface-2);border-radius:999px;padding:4px 10px;font-size:13px}
 
-.gotchas{display:flex;flex-wrap:wrap;gap:8px}
-.chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:14px}
-.chip b{color:var(--warn)}
-
-.foot{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13px;color:var(--muted)}
+.foot{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:center;font-size:13px;color:var(--muted)}
 .foot .more{font-weight:700;font-size:14px}
 </style>
 </head>
 <body>
 <main class="page">
 
-  <div class="hero">
+  <header>
     <div>
-      <div class="use">Default for our records</div>
-      <div class="big">PDF/A-2u</div>
+      <h1>For records we keep for decades, <em>PDF/A-2</em> is the strongest fit</h1>
+      <p class="lede">We compared all four versions of the archival PDF standard on what matters for court records: searchable text, how archives treat it, and what could go wrong.</p>
     </div>
-    <p>An archive-safe PDF whose text stays searchable.<sup><a href="details.html#s3">3</a></sup><sup><a href="details.html#s9">9</a></sup> The U.S. National Archives (NARA) lists PDF/A-2 as a preferred format.<sup><a href="details.html#s14">14</a></sup></p>
     <button class="theme" id="t" type="button" aria-label="Toggle theme">◐</button>
+  </header>
+
+  <div class="tablewrap">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>PDF/A-1<small>2005<sup><a href="details.html#s1">1</a></sup></small></th>
+          <th class="pick">PDF/A-2 <span class="badge">Proposed</span><small>2011<sup><a href="details.html#s3">3</a></sup></small></th>
+          <th>PDF/A-3<small>2012<sup><a href="details.html#s2">2</a></sup></small></th>
+          <th>PDF/A-4<small>2020<sup><a href="details.html#s6">6</a></sup></small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Guarantees searchable text?</th>
+          <td><span class="d">Only with full tagging (1a)</span><sup><a href="details.html#s3">3</a></sup><sup><a href="details.html#s10">10</a></sup></td>
+          <td class="pick"><span class="y">Yes, with level "u"</span><sup><a href="details.html#s3">3</a></sup><sup><a href="details.html#s9">9</a></sup></td>
+          <td><span class="y">Yes, with level "u"</span><sup><a href="details.html#s3">3</a></sup></td>
+          <td><span class="d">Drops the a/b/u levels</span><sup><a href="details.html#s4">4</a></sup></td>
+        </tr>
+        <tr>
+          <th>Handles modern documents?</th>
+          <td><span class="n">No transparency or layers</span><sup><a href="details.html#s8">8</a></sup></td>
+          <td class="pick"><span class="y">Transparency, layers, JPEG 2000</span><sup><a href="details.html#s8">8</a></sup></td>
+          <td><span class="y">Same as PDF/A-2</span><sup><a href="details.html#s3">3</a></sup></td>
+          <td><span class="d">Based on PDF 2.0</span><sup><a href="details.html#s6">6</a></sup></td>
+        </tr>
+        <tr>
+          <th>What can be embedded?</th>
+          <td><span class="d">—</span></td>
+          <td class="pick"><span class="y">Only other PDF/A files</span><sup><a href="details.html#s5">5</a></sup></td>
+          <td><span class="n">Any file format</span><sup><a href="details.html#s3">3</a></sup></td>
+          <td><span class="n">Any file format (4f)</span><sup><a href="details.html#s4">4</a></sup></td>
+        </tr>
+        <tr>
+          <th>U.S. National Archives view</th>
+          <td><span class="y">Preferred</span><sup><a href="details.html#s14">14</a></sup></td>
+          <td class="pick"><span class="y">Preferred</span><sup><a href="details.html#s14">14</a></sup></td>
+          <td><span class="n">Not listed as preferred; avoid its attachments</span><sup><a href="details.html#s14">14</a></sup><sup><a href="details.html#s15">15</a></sup></td>
+          <td><span class="n">Avoid its attachments</span><sup><a href="details.html#s15">15</a></sup></td>
+        </tr>
+        <tr>
+          <th>Biggest drawback</th>
+          <td>Searchable text requires full tagging; no transparency<sup><a href="details.html#s10">10</a></sup><sup><a href="details.html#s8">8</a></sup></td>
+          <td class="pick">Can embed only other PDF/A files</td>
+          <td>Archive inherits every embedded format, and its virus risk<sup><a href="details.html#s14">14</a></sup></td>
+          <td>Library of Congress found no software that conforms to it yet<sup><a href="details.html#s6">6</a></sup></td>
+        </tr>
+        <tr class="verdict">
+          <th>Our read</th>
+          <td><span class="pill p-ok">Workable</span></td>
+          <td class="pick"><span class="pill p-best">Best fit</span></td>
+          <td><span class="pill p-risk">Riskier</span></td>
+          <td><span class="pill p-early">Too early</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div>
-    <div class="label">Pick by situation</div>
-    <div class="grid4">
-      <div class="tile t-go"><div class="if">Made on a computer</div><div class="then">PDF/A-2u</div><div class="note">2a if your tools tag structure<sup><a href="details.html#s10">10</a></sup></div></div>
-      <div class="tile t-go"><div class="if">Scanned paper</div><div class="then">PDF/A-2b</div><div class="note">the usual level for scans<sup><a href="details.html#s7">7</a></sup></div></div>
-      <div class="tile t-court"><div class="if">Filing with a court</div><div class="then">Court's rule</div><div class="note">federal FAQs: 1a preferred, 1b minimum<sup><a href="details.html#s17">17</a></sup></div></div>
-      <div class="tile t-no"><div class="if">Need attachments inside</div><div class="then">Don't</div><div class="note">NARA: don't use attachments in PDF/A-3 or 4<sup><a href="details.html#s15">15</a></sup></div></div>
+  <div class="bottom">
+    <div class="card">
+      <div class="label">How it would work day to day</div>
+      <dl class="uses">
+        <dt>2u</dt><dd>Documents created on a computer. Text stays searchable.<sup><a href="details.html#s9">9</a></sup></dd>
+        <dt>2a</dt><dd>When our tools can also tag headings and structure.<sup><a href="details.html#s10">10</a></sup></dd>
+        <dt>2b</dt><dd>Scanned paper, the usual level for scans.<sup><a href="details.html#s7">7</a></sup></dd>
+        <dt>Filings</dt><dd>When a court names a version, we use it. Federal court FAQs name 1a, with 1b as the minimum.<sup><a href="details.html#s17">17</a></sup></dd>
+      </dl>
     </div>
-  </div>
-
-  <div>
-    <div class="label">Why not the others</div>
-    <div class="grid3">
-      <div class="tile no"><span class="x w">1</span><div><b>PDF/A-1 is more limited</b><span>No transparency, no layers, no "u" level.<sup><a href="details.html#s8">8</a></sup><sup><a href="details.html#s3">3</a></sup></span></div></div>
-      <div class="tile no"><span class="x">3</span><div><b>PDF/A-3 allows any attachment</b><span>The archive inherits every embedded format and its virus risk.<sup><a href="details.html#s14">14</a></sup></span></div></div>
-      <div class="tile no"><span class="x w">4</span><div><b>PDF/A-4 lacks software support</b><span>Library of Congress found no conforming PDF/A-4 software.<sup><a href="details.html#s6">6</a></sup></span></div></div>
-    </div>
-  </div>
-
-  <div>
-    <div class="label">Know this</div>
-    <div class="gotchas">
-      <span class="chip"><b>"b"</b> = may look right but not be searchable<sup><a href="details.html#s9">9</a></sup></span>
-      <span class="chip"><b>No</b> passwords or encryption<sup><a href="details.html#s5">5</a></sup></span>
-      <span class="chip"><b>Not</b> proof of authenticity<sup><a href="details.html#s11">11</a></sup></span>
-      <span class="chip"><b>No</b> audio, video or scripts<sup><a href="details.html#s5">5</a></sup></span>
-      <span class="chip"><b>Check</b> files with free veraPDF<sup><a href="details.html#s20">20</a></sup></span>
+    <div class="card">
+      <div class="label">Worth knowing about any PDF/A</div>
+      <div class="chips">
+        <span class="chip">No passwords or encryption<sup><a href="details.html#s5">5</a></sup></span>
+        <span class="chip">Not proof of authenticity<sup><a href="details.html#s11">11</a></sup></span>
+        <span class="chip">No audio, video or scripts<sup><a href="details.html#s5">5</a></sup></span>
+        <span class="chip">Level "b" may look right but not be searchable<sup><a href="details.html#s9">9</a></sup></span>
+        <span class="chip">Free checker: veraPDF<sup><a href="details.html#s20">20</a></sup></span>
+      </div>
     </div>
   </div>
 
   <div class="foot">
     <a class="more" href="details.html">Full explainer and all 21 sources →</a>
-    <span>Superscripts link to sources. The recommendation is our analysis of them. Court rules win.</span>
+    <span>Superscripts link to each source. "Our read" and the proposal are our analysis of those sources.</span>
   </div>
 
 </main>
